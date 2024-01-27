@@ -15,4 +15,8 @@
       ></fa-icon>
     </span>
   </form>
+
+  @if (weatherData) {
+    <app-card [weatherDatas]="weatherData"></app-card>
+  }
 </div>

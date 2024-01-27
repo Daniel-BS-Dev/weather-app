@@ -1,0 +1,33 @@
+@if (weatherDatas) {
+  <main class="container">
+    <section class="upper-data">
+      @if (weatherDatas.main.temp > 15) {
+        <img src="../../../../../../assets/images" alt="">
+      }
+      @if (weatherDatas.main.temp <= 15) {
+        <img src="../../../../../../assets/images" alt="">
+      }
+
+      <article class="weather-data">
+        <label class="location">{{ weatherDatas.name }}</label>
+        <span class="temperature">{{ temperature }}°C</span>
+      </article>
+    </section>
+
+    <section class="lower-data">
+      <label class="more-info-label"> Mais informações </label>
+        <article class="more-info-container">
+          <div class="info-block">
+            <span class="info-block-label">
+              <fa-icon size="lg" [icon]="minTemperatureIcon"></fa-icon>
+              <span>Mínima</span>
+            </span>
+
+            <span class="info-block-value">
+              {{ weatherDatas.main.temp_min }}
+            </span>
+          </div>
+        </article>
+      </section>
+    </main>
+}
