@@ -1,9 +1,9 @@
 <div class="search">
   <form #form (submit)="onSubmit()">
     <input
-      placeholder="Buscar localização"
+      placeholder="Busque pelo nome"
       name="city"
-      [formControl]="initialCityName">
+      [(ngModel)]="initialCityName">
 
     <span (click)="onSubmit()">
       <fa-icon

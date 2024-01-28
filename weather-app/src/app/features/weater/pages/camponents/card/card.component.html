@@ -2,32 +2,26 @@
   <main class="container">
     <section class="upper-data">
       @if (weatherDatas.main.temp > 15) {
-        <img src="../../../../../../assets/images" alt="">
+        <img src="../../../../../../assets/images/sun1.jpg" alt="Dia de sol">
       }
       @if (weatherDatas.main.temp <= 15) {
-        <img src="../../../../../../assets/images" alt="">
+        <img src="../../../../../../assets/images/cool.jpeg" alt="Dia de frio">
       }
 
       <article class="weather-data">
         <label class="location">{{ weatherDatas.name }}</label>
-        <span class="temperature">{{ temperature }}°C</span>
+        <span class="temperature">{{ temperature }}</span>
       </article>
     </section>
 
     <section class="lower-data">
       <label class="more-info-label"> Mais informações </label>
-        <article class="more-info-container">
-          <div class="info-block">
-            <span class="info-block-label">
-              <fa-icon size="lg" [icon]="minTemperatureIcon"></fa-icon>
-              <span>Mínima</span>
-            </span>
-
-            <span class="info-block-value">
-              {{ weatherDatas.main.temp_min }}
-            </span>
-          </div>
-        </article>
-      </section>
+      <article class="more-info-container">
+        <app-card-item class="info-block" labelIcon="Mínima" [temperatureIcon]="minTemperatureIcon" [temperature]="minTemperature"></app-card-item>
+        <app-card-item class="info-block" labelIcon="Máxima" [temperatureIcon]="maxTemperatureIcon" [temperature]="maxTemperature"></app-card-item>
+        <app-card-item class="info-block" labelIcon="Humidade" [temperatureIcon]="humidityIcon" [temperature]="weatherDatas.main.humidity + ' %'"></app-card-item>
+        <app-card-item class="info-block" labelIcon="Vento" [temperatureIcon]="windIcon" [temperature]="weatherDatas.wind.speed + ' Km/h'"></app-card-item>
+      </article>
+    </section>
     </main>
 }

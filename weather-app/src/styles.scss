@@ -1,7 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'ngx-toastr/toastr';
+
 :root {
   --blue-1: #2242c2;
-  --blue-2: #0368ec;
+  --blue-2: #071930;
   --white: #fff;
   --grey-1: #ededed;
   --shadow-dark: rgba(0, 0, 0, 0.3);
@@ -19,7 +21,7 @@ body {
   font-size: 16px;
   width: 100%;
   height: 100%;
-  background-color: var(--blue-1);
+  background-color: var(--blue-2);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,7 +34,7 @@ fa-icon {
 .container {
   width: 500px;
   height: 80vh;
-  background-color: var(--blue-2);
+  background-color: var(--shadow-light);
   border-radius: 20px;
   box-shadow: 10px 10px 10px var(--shadow-dark);
   margin-top: 3rem;
@@ -98,7 +100,7 @@ fa-icon {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 0.5rem;
+  margin-top: 1em;
 }
 
 .more-info-container {
@@ -115,14 +117,17 @@ fa-icon {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .info-block {
   width: 50%;
   display: flex;
-  flex-direction: row;
   margin-top: 1em;
   margin-bottom: 1em;
+  align-items: center;
+  justify-content: center;
 }
 
 .info-block-label {
@@ -145,6 +150,7 @@ fa-icon {
   justify-content: flex-start;
   align-items: center;
   color: var(--white);
+  margin-bottom: 2em;
 }
 
 .search {
@@ -153,7 +159,7 @@ fa-icon {
 }
 
 .search input {
-  background-color: var(--shadow-dark);
+  background-color: var(--shadow-light);
   outline: none;
   border: none;
   border-radius: 20px;

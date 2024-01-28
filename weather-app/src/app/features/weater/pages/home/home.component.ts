@@ -4,9 +4,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { WeatherModel } from '../../../model/weather';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { CardComponent } from '../camponents/card/card.component';
 import { NgIf } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +16,7 @@ import { NgIf } from '@angular/common';
   imports: [
     HttpClientModule,
     FontAwesomeModule,
-    ReactiveFormsModule,
+    FormsModule,
     CardComponent,
     NgIf,
   ],
@@ -24,11 +26,14 @@ import { NgIf } from '@angular/common';
 })
 export class HomeComponent {
 
-  initialCityName = new FormControl('Campinas');
+  initialCityName = 'Campinas';
   weatherData!: WeatherModel;
   searchIcon = faMagnifyingGlass;
 
-  constructor(private service: WeatherService) { }
+  constructor(
+    private service: WeatherService,
+    private toastr: ToastrService,
+  ) { }
 
   ngOnInit(): void {
     this.getWeatherDatas();
@@ -39,13 +44,13 @@ export class HomeComponent {
   }
 
   private getWeatherDatas() {
-    this.service.getWeatherDatas(this.initialCityName.value || '')
+    this.service.getWeatherDatas(this.initialCityName)
     .subscribe({
       next: (response) => {
         response && (this.weatherData = response);
-        this.initialCityName.patchValue('');
+        this.initialCityName = '';
         },
-        error: (error) => console.log(error)
+        error: () => this.toastr.info('Verifique o nome digitado, e tente novamente.', 'Nome inválido')
       });
 
   }
