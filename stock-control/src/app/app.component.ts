@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
+import { PrimeNGConfig } from 'primeng/api';
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -9,5 +11,9 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'weather-app';
+  title = 'stock-control';
+
+  constructor(private primeConfig: PrimeNGConfig) {
+
+  }
 }
